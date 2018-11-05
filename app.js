@@ -5,14 +5,18 @@ const path = require('path');
 const app = express();
 
 
-app.use('/index.html', express.static('../public/index.html'));
+app.use('/', express.static('public'));
 
-const testFolder = '/data';
 
-fs.readdir(testFolder, (err, files) => {
-  files.forEach(file => {
-    console.log(file);
-  });
+
+app.get('/data', (req, res) => {
+    const testFolder = '/data';
+
+    fs.readdir(testFolder, (err, files) => {
+        res.set("Content-Type", "application/json");
+        res.write(JSON.stringify(files));
+        res.end();
+    })
 })
 
 app.get('/data/:dataName', (req, res) => {
@@ -32,7 +36,7 @@ app.get('/data/:dataName', (req, res) => {
         return;
     }
 
-    res.header('Content-Type: text/csv');
+    res.set("Content-Type", "text/csv");
     fs.createReadStream(ddataPath).pipe(res);
 })
 
