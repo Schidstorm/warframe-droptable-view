@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  warframe-droptable-view:
+    build: .
+    image: necromant/warframe-droptable-view
+    volumes:
+      - warframe-parsed:/data
+    ports:
+      - ${SERVICE_PORT}:${SERVICE_PORT}
+    environment:
+      - SERVICE_PORT=${SERVICE_PORT}
+
+volumes:
+  warframe-parsed:
+    external: true
