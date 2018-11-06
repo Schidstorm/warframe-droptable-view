@@ -57,6 +57,15 @@
                 Parsed parts of the warframe droptable.
             </h3>
         </header>
+
+        <div class="droptable-search">
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="droptable-search" autofocus>
+                        <label class="mdl-textfield__label" for="sample3">Search...</label>
+                    </div>
+                </form>
+        </div>
         
         <div id="droptable-csv-list" class="droptable-csv-list">
 
@@ -93,6 +102,22 @@
                     document.getElementById('droptable-update-date').innerText = updateTime.toLocaleDateString();
                     document.getElementById('droptable-update-time').innerText = updateTime.toLocaleTimeString();
                 })
+            })
+
+            const search = document.getElementById('droptable-search');
+            const list = document.getElementById('droptable-csv-list');
+            search.addEventListener('input', () => {
+                const links = list.getElementsByTagName('a');
+
+                for(let link of links) {
+                    const linkText = link.innerText;
+
+                    if (linkText.toLowerCase().indexOf(search.value.toLowerCase()) !== -1) {
+                        link.hidden = false;
+                    } else {
+                        link.hidden = true;
+                    }
+                }
             })
         </script>
     </body>
