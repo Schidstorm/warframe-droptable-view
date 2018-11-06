@@ -14,7 +14,7 @@ app.get('/data', (req, res) => {
 
     fs.readdir(testFolder, (err, files) => {
         res.set("Content-Type", "application/json");
-        res.write(JSON.stringify(files));
+        res.write(JSON.stringify(files.filter(f => f.charAt(0) !== '.')));
         res.end();
     })
 })
