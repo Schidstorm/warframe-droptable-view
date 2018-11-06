@@ -19,6 +19,17 @@ app.get('/data', (req, res) => {
     })
 })
 
+app.get('/time', (req, res) => {
+    res.set("Content-Type", "text/plain");
+
+    if (!fs.existsSync("/data/.updateTime")) {
+        res.status(404);
+        res.end();
+    } else {
+        fs.createReadStream('/data/.updateTime').pipe(res);
+    }
+})
+
 app.get('/data/:dataName', (req, res) => {
     const dataName = req.params.dataName;
 
