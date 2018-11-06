@@ -38,6 +38,10 @@
                 font-size: 0.8em;
                 color: rgb(150, 150, 150);
             }
+
+            .droptable-update-time span {
+                margin-right: 5px;
+            }
         </style>
     </head>
     <body>
@@ -50,9 +54,10 @@
         <div id="droptable-csv-list" class="droptable-csv-list">
 
         </div>
-        <div class="droptable-update-time">
+        <span class="droptable-update-time">
             Last update: 
-            <span id="droptable-update-time" >
+            <span id="droptable-update-date"></span>
+            <span id="droptable-update-time"></span>
         </div>
 
         </span>
@@ -74,8 +79,8 @@
             fetch('/time').then(res => {
                 res.text().then(updateTimeString => {
                     const updateTime = new Date(updateTimeString);
-                    const timeString = updateTime.toLocaleDateString() + updateTime.toLocaleTimeString();
-                    document.getElementById('droptable-update-time').innerText = timeString;
+                    document.getElementById('droptable-update-date').innerText = updateTime.toLocaleDateString();
+                    document.getElementById('droptable-update-time').innerText = updateTime.toLocaleTimeString();
                 })
             })
         </script>
