@@ -11,7 +11,7 @@
             }
 
             body {
-                padding-left: 40px;
+                margin-left: 40px;
             }
 
             .droptable-csv-list {
@@ -37,6 +37,18 @@
             .droptable-update-time span {
                 margin-right: 5px;
             }
+
+            .info {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .info a {
+                text-decoration: none;
+                color: rgb(150, 150, 150);
+                margin-right: 5px;
+            }
         </style>
     </head>
     <body>
@@ -55,7 +67,10 @@
             <span id="droptable-update-time"></span>
         </div>
 
-        </div>
+        <footer class="info">
+            <a href="/impressum.html">Impressum</a>
+            <a href="/dsgvo.html">Datenschutzerklärung</a>
+        </footer>
 
         <script>
             fetch('/data').then(res => {
