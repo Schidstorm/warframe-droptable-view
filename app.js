@@ -22,7 +22,7 @@ app.get('/data', (req, res) => {
 app.get('/data/:dataName', (req, res) => {
     const dataName = req.params.dataName;
 
-    const validDataNameCheck = /^[a-zA-Z_\-0-9\.]+$/;
+    const validDataNameCheck = /^[a-zA-Z_\-0-9][a-zA-Z_\-0-9\.]+$/;
     if (!validDataNameCheck.test(dataName)) {
         res.status(406);
         res.end('');
