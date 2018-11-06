@@ -33,6 +33,11 @@
             .droptable-csv-list a:hover {
                 background-color: rgb(206, 206, 206);
             }
+
+            .droptable-update-time {
+                font-size: 0.8em;
+                color: rgb(150, 150, 150);
+            }
         </style>
     </head>
     <body>
@@ -45,6 +50,12 @@
         <div id="droptable-csv-list" class="droptable-csv-list">
 
         </div>
+        <div class="droptable-update-time">
+            Last update: 
+            <span id="droptable-update-time" >
+        </div>
+
+        </span>
 
         <script>
             fetch('/data').then(res => {
@@ -57,6 +68,14 @@
                         element.setAttribute('download', link);
                         container.appendChild(element);
                     }
+                })
+            })
+
+            fetch('/time').then(res => {
+                res.text().then(updateTimeString => {
+                    const updateTime = new Date(updateTimeString);
+                    const timeString = updateTime.toLocaleDateString();
+                    document.getElementById('droptable-update-time').innerText = timeString;
                 })
             })
         </script>
