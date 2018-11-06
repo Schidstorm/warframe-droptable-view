@@ -74,7 +74,7 @@
             fetch('/time').then(res => {
                 res.text().then(updateTimeString => {
                     const updateTime = new Date(updateTimeString);
-                    const timeString = updateTime.toLocaleDateString();
+                    const timeString = updateTime.toLocaleDateString() + updateTime.toLocaleTimeString();
                     document.getElementById('droptable-update-time').innerText = timeString;
                 })
             })
