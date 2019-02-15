@@ -10,14 +10,6 @@ services:
       - ${SERVICE_PORT}:${SERVICE_PORT}
     environment:
       - SERVICE_PORT=${SERVICE_PORT}
-    networks:
-      - fluentd
-    logging:
-      driver: fluentd
-
-networks:
-  fluentd:
-    external: true
 
 volumes:
   warframe-parsed:
