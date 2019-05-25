@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   warframe-droptable-view:
@@ -14,3 +14,4 @@ services:
 volumes:
   warframe-parsed:
     external: true
+#force webhook push
